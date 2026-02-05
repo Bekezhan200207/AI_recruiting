@@ -56,18 +56,18 @@ const docTemplate = `{
         },
         "/applications/{id}": {
             "get": {
-                "description": "Возвращает подробную информацию о конкретном отклике по его ID. (Маршрут: /:id, где id - это ID заявки)",
+                "description": "Получает список всех откликов, привязанных к конкретному ID вакансии. (Маршрут: /:id/vacancy, где id - это ID вакансии)",
                 "produces": [
                     "application/json"
                 ],
                 "tags": [
                     "applications"
                 ],
-                "summary": "Полная информация о заявке",
+                "summary": "Список заявок на вакансию",
                 "parameters": [
                     {
                         "type": "string",
-                        "description": "ID заявки (application_id)",
+                        "description": "ID вакансии",
                         "name": "id",
                         "in": "path",
                         "required": true
@@ -75,13 +75,16 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "Объект заявки",
+                        "description": "Список заявок",
                         "schema": {
-                            "$ref": "#/definitions/models.Application"
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.Application"
+                            }
                         }
                     },
-                    "404": {
-                        "description": "Заявка не найдена",
+                    "500": {
+                        "description": "Ошибка сервера",
                         "schema": {
                             "type": "object",
                             "additionalProperties": {
@@ -185,6 +188,44 @@ const docTemplate = `{
                     },
                     "500": {
                         "description": "Ошибка БД",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/applications/{id}/vacancy": {
+            "get": {
+                "description": "Возвращает подробную информацию о конкретном отклике по его ID. (Маршрут: /:id, где id - это ID заявки)",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "applications"
+                ],
+                "summary": "Полная информация о заявке",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "ID заявки (application_id)",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Объект заявки",
+                        "schema": {
+                            "$ref": "#/definitions/models.Application"
+                        }
+                    },
+                    "404": {
+                        "description": "Заявка не найдена",
                         "schema": {
                             "type": "object",
                             "additionalProperties": {
@@ -1082,7 +1123,7 @@ const docTemplate = `{
 // SwaggerInfo holds exported Swagger Info so clients can modify it
 var SwaggerInfo = &swag.Spec{
 	Version:          "1.0",
-	Host:             "ai-recruiting.onrender.com",
+	Host:             "https://ai-recruiting-4l5g.onrender.com",
 	BasePath:         "/",
 	Schemes:          []string{},
 	Title:            "AI Recruiting API",

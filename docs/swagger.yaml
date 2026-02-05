@@ -57,7 +57,7 @@ definitions:
       title:
         type: string
     type: object
-host: ai-recruiting.onrender.com
+host: https://ai-recruiting-4l5g.onrender.com
 info:
   contact: {}
   description: API сервис для автоматизации рекрутинга.
@@ -94,10 +94,10 @@ paths:
       - portal
   /applications/{id}:
     get:
-      description: 'Возвращает подробную информацию о конкретном отклике по его ID.
-        (Маршрут: /:id, где id - это ID заявки)'
+      description: 'Получает список всех откликов, привязанных к конкретному ID вакансии.
+        (Маршрут: /:id/vacancy, где id - это ID вакансии)'
       parameters:
-      - description: ID заявки (application_id)
+      - description: ID вакансии
         in: path
         name: id
         required: true
@@ -106,16 +106,18 @@ paths:
       - application/json
       responses:
         "200":
-          description: Объект заявки
+          description: Список заявок
           schema:
-            $ref: '#/definitions/models.Application'
-        "404":
-          description: Заявка не найдена
+            items:
+              $ref: '#/definitions/models.Application'
+            type: array
+        "500":
+          description: Ошибка сервера
           schema:
             additionalProperties:
               type: string
             type: object
-      summary: Полная информация о заявке
+      summary: Список заявок на вакансию
       tags:
       - applications
   /applications/{id}/ai-data:
@@ -185,6 +187,32 @@ paths:
               type: string
             type: object
       summary: Изменение статуса заявки
+      tags:
+      - applications
+  /applications/{id}/vacancy:
+    get:
+      description: 'Возвращает подробную информацию о конкретном отклике по его ID.
+        (Маршрут: /:id, где id - это ID заявки)'
+      parameters:
+      - description: ID заявки (application_id)
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Объект заявки
+          schema:
+            $ref: '#/definitions/models.Application'
+        "404":
+          description: Заявка не найдена
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Полная информация о заявке
       tags:
       - applications
   /auth/candidate/login:

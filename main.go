@@ -16,7 +16,7 @@ import (
 // @title AI Recruiting API
 // @version 1.0
 // @description API сервис для автоматизации рекрутинга.
-// @host ai-recruiting.onrender.com
+// @host https://ai-recruiting-4l5g.onrender.com
 // @BasePath /
 func main() {
 	// 1. Инициализация логгера
@@ -49,7 +49,7 @@ func main() {
 		origin := c.Request.Header.Get("Origin")
 
 		// Разрешаем только нужные фронты
-		if origin == "https://ai-recruiting-frontend.onrender.com" {
+		if origin == "https://ai-recruiting-4l5g.onrender.com" {
 			c.Writer.Header().Set("Access-Control-Allow-Origin", origin)
 			c.Writer.Header().Set("Vary", "Origin") // чтобы браузеры кэш правильно делали
 		}

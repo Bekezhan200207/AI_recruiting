@@ -46,7 +46,7 @@ func (h *CandidateHandler) GetListByVacancy(c *gin.Context) {
 // @Param id path string true "ID заявки (application_id)"
 // @Success 200 {object} models.Application "Объект заявки"
 // @Failure 404 {object} map[string]string "Заявка не найдена"
-// @Router /applications/{id} [get]
+// @Router /applications/{id}/vacancy [get]
 func (h *CandidateHandler) GetApplicationDetails(c *gin.Context) {
 	appID := c.Param("id")
 
