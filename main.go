@@ -49,7 +49,7 @@ func main() {
 		origin := c.Request.Header.Get("Origin")
 
 		// Разрешаем только нужные фронты
-		if origin == "https://ai-recruiting-4l5g.onrender.com" {
+		if origin == config.Config.FrontEndURL {
 			c.Writer.Header().Set("Access-Control-Allow-Origin", origin)
 			c.Writer.Header().Set("Vary", "Origin") // чтобы браузеры кэш правильно делали
 		}

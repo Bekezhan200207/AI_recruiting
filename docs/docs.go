@@ -1123,7 +1123,7 @@ const docTemplate = `{
 // SwaggerInfo holds exported Swagger Info so clients can modify it
 var SwaggerInfo = &swag.Spec{
 	Version:          "1.0",
-	Host:             "https://ai-recruiting-4l5g.onrender.com",
+	Host:             "ai-recruiting-4l5g.onrender.com",
 	BasePath:         "/",
 	Schemes:          []string{},
 	Title:            "AI Recruiting API",

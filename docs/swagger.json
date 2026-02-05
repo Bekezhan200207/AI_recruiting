@@ -6,7 +6,7 @@
         "contact": {},
         "version": "1.0"
     },
-    "host": "https://ai-recruiting-4l5g.onrender.com",
+    "host": "ai-recruiting-4l5g.onrender.com",
     "basePath": "/",
     "paths": {
         "/applications": {

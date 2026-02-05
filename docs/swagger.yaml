@@ -57,7 +57,7 @@ definitions:
       title:
         type: string
     type: object
-host: https://ai-recruiting-4l5g.onrender.com
+host: ai-recruiting-4l5g.onrender.com
 info:
   contact: {}
   description: API сервис для автоматизации рекрутинга.
