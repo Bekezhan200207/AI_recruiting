@@ -16,7 +16,7 @@ import (
 // @title AI Recruiting API
 // @version 1.0
 // @description API сервис для автоматизации рекрутинга.
-// @host https://ai-recruiting-4l5g.onrender.com
+// @host ai-recruiting-4l5g.onrender.com
 // @BasePath /
 func main() {
 	// 1. Инициализация логгера
